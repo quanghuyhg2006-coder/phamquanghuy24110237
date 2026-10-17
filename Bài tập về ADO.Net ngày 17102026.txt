@@ -1,0 +1,153 @@
+using Microsoft.Data.SqlClient;
+using QuanLySinhVien.Data.Entity;
+using System;
+using System.Collections.Generic;
+using System.Data;
+
+namespace QuanLySinhVien.Data.DAL
+{
+    public class SinhVienDAL
+    {
+        DataHelper dataHelper = new DataHelper();
+
+        public SinhVienDAL()
+        {
+        }
+
+        public List<SinhVien> GetAllSinhVien()
+        {
+            List<SinhVien> sinhViens = new List<SinhVien>();
+            SqlDataReader dr = null;
+            try
+            {
+                dr = dataHelper.ExcuteReader("Select * from SinhVien");
+                while (dr.Read())
+                {
+                    SinhVien sv = new SinhVien();
+                    sv.MaSV = dr["MaSV"].ToString();
+                    sv.HoTen = dr["HoTen"].ToString();
+                    sv.GioiTinh = dr["gioitinh"].ToString();
+                    sv.NgaySinh = dr["NgaySinh"].ToString();
+                    sv.SoDienThoai = dr["SoDienThoai"].ToString();
+                    sv.MaLop = dr["MaLop"].ToString();
+                    sv.Diem = double.Parse(dr["Diem"].ToString());
+                    sv.Email = dr["email"].ToString();
+                    sinhViens.Add(sv);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi lấy danh sách sinh viên: " + ex.Message);
+            }
+            finally
+            {
+                if (dr != null && !dr.IsClosed) dr.Close();
+                dataHelper.CloseConnection();
+            }
+            return sinhViens;
+        }
+
+        public List<SinhVien> GetSinhViensByMaLop(string maLop)
+        {
+            List<SinhVien> lv = new List<SinhVien>();
+            try
+            {
+                DataTable dt = dataHelper.GetDataTable($"Select * from SinhVien where Malop='{maLop}'");
+                foreach (DataRow r in dt.Rows)
+                {
+                    SinhVien sv = new SinhVien();
+                    sv.MaSV = r["MaSV"].ToString();
+                    sv.HoTen = r["HoTen"].ToString();
+                    sv.GioiTinh = r["gioitinh"].ToString();
+                    sv.NgaySinh = r["NgaySinh"].ToString();
+                    sv.SoDienThoai = r["SoDienThoai"].ToString();
+                    sv.MaLop = r["MaLop"].ToString();
+                    sv.Diem = double.Parse(r["Diem"].ToString());
+                    sv.Email = r["email"].ToString();
+                    lv.Add(sv);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi lấy sinh viên theo lớp: " + ex.Message);
+            }
+            return lv;
+        }
+
+        public void AddSinhVien(SinhVien sv)
+        {
+            try
+            {
+                string sql = $"insert into SinhVien (MaSV, Malop, Hoten, GioiTinh, NgaySinh, Diem, SoDienThoai, Email) " +
+                             $"values('{sv.MaSV}', '{sv.MaLop}', N'{sv.HoTen}', N'{sv.GioiTinh}', '{sv.NgaySinh}', " +
+                             $"{sv.Diem}, '{sv.SoDienThoai}', '{sv.Email}')";
+                dataHelper.ExecuteNonQuery(sql);
+            }
+            catch (Exception ex)
+            { 
+                throw new Exception("Lỗi thêm sinh viên: " + ex.Message); 
+            }
+        }
+
+        public void UpdateSinhVien(SinhVien sv)
+        {
+            try
+            {
+                string sql = $"Update SinhVien SET " +
+                             $"Hoten=N'{sv.HoTen}', " +
+                             $"MaLop='{sv.MaLop}', " +
+                             $"GioiTinh=N'{sv.GioiTinh}', " +
+                             $"NgaySinh='{sv.NgaySinh}', " +
+                             $"Diem={sv.Diem}, " +
+                             $"SoDienThoai='{sv.SoDienThoai}', " +
+                             $"Email='{sv.Email}' " +
+                             $"WHERE MaSV='{sv.MaSV}'";
+                dataHelper.ExecuteNonQuery(sql);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi cập nhật sinh viên: " + ex.Message);
+            }
+        }
+
+        public void DeleteSinhVien(string maSV)
+        {
+            try
+            {
+                string sql = $"Delete from SinhVien where MaSV = '{maSV}'";
+                dataHelper.ExecuteNonQuery(sql);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi xóa sinh viên: " + ex.Message);
+            }
+        }
+
+        public SinhVien GetSinhVienById(string maSV)
+        {
+            try
+            {
+                DataTable dt = dataHelper.GetDataTable($"Select * from SinhVien where MaSV='{maSV}'");
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow r = dt.Rows[0];
+                    SinhVien sv = new SinhVien();
+                    sv.MaSV = r["MaSV"].ToString();
+                    sv.HoTen = r["HoTen"].ToString();
+                    sv.GioiTinh = r["gioitinh"].ToString();
+                    sv.NgaySinh = r["NgaySinh"].ToString();
+                    sv.SoDienThoai = r["SoDienThoai"].ToString();
+                    sv.MaLop = r["MaLop"].ToString();
+                    sv.Diem = double.Parse(r["Diem"].ToString());
+                    sv.Email = r["email"].ToString();
+                    return sv;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi tìm sinh viên theo ID: " + ex.Message);
+            }
+            return null;
+        }
+    }
+}
