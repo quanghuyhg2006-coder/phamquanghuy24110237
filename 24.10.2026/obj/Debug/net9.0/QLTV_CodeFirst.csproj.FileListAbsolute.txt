@@ -1,0 +1,14 @@
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\bin\Debug\net9.0\QLTV_CodeFirst.deps.json
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\bin\Debug\net9.0\QLTV_CodeFirst.runtimeconfig.json
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\bin\Debug\net9.0\QLTV_CodeFirst.dll
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\bin\Debug\net9.0\QLTV_CodeFirst.pdb
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\obj\Debug\net9.0\QLTV_CodeFirst.csproj.AssemblyReference.cache
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\obj\Debug\net9.0\QLTV_CodeFirst.GeneratedMSBuildEditorConfig.editorconfig
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\obj\Debug\net9.0\QLTV_CodeFirst.AssemblyInfoInputs.cache
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\obj\Debug\net9.0\QLTV_CodeFirst.AssemblyInfo.cs
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\obj\Debug\net9.0\QLTV_CodeFirst.csproj.CoreCompileInputs.cache
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\obj\Debug\net9.0\QLTV_CodeFirst.dll
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\obj\Debug\net9.0\refint\QLTV_CodeFirst.dll
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\obj\Debug\net9.0\QLTV_CodeFirst.pdb
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\obj\Debug\net9.0\QLTV_CodeFirst.genruntimeconfig.cache
+C:\VJU Files\VJU 3rd\Lập trình nâng cao\QLTV_CodeFirst\obj\Debug\net9.0\ref\QLTV_CodeFirst.dll
